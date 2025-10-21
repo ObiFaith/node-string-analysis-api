@@ -1,0 +1,148 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "String Analyzer API",
+    "description": "A RESTful API service that analyzes strings and stores their computed properties"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Home"
+    },
+    {
+      "name": "Strings",
+      "description": "String Analyzer Endpoints"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["Home"],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/strings/": {
+      "get": {
+        "tags": ["Strings"],
+        "description": "Get All Strings with Filtering",
+        "parameters": [
+          {
+            "name": "min_length",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "max_length",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "word_count",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "is_palindrome",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "contains_character",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": ["Strings"],
+        "description": "Create/Analyze String",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "example": "string to analyze"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/strings/filter-by-natural-language": {
+      "get": {
+        "tags": ["Strings"],
+        "description": "Natural Language Filtering",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/strings/{value}": {
+      "get": {
+        "tags": ["Strings"],
+        "description": "Get Specific String (by its value)",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Strings"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
