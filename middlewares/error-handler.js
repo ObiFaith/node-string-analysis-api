@@ -7,5 +7,7 @@ export const ErrorHandler = (err, req, res, next) => {
       ? err.statusCode
       : StatusCodes.INTERNAL_SERVER_ERROR;
 
-  return res.status(statusCode).json({ status: "error", message: err.message });
+  return res
+    .status(statusCode)
+    .json({ status: "error", message: err.message || "Something went wrong!" });
 };

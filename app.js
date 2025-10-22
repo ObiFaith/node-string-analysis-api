@@ -31,7 +31,7 @@ app.get("/", (_, res) =>
     '<h1>String Analyzer API</h1><a href="/api-docs">Swagger Documentation</a>'
   )
 );
-app.use("/api/v1/strings", /* #swagger.tags = ['Strings'] */ stringRouter);
+app.use("/strings", /* #swagger.tags = ['Strings'] */ stringRouter);
 
 // error handler
 app.use(NotFound);

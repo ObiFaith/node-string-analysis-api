@@ -29,7 +29,7 @@
         }
       }
     },
-    "/api/v1/strings/": {
+    "/strings/": {
       "get": {
         "tags": ["Strings"],
         "description": "Get All Strings with Filtering",
@@ -90,7 +90,7 @@
         }
       }
     },
-    "/api/v1/strings/filter-by-natural-language": {
+    "/strings/filter-by-natural-language": {
       "get": {
         "tags": ["Strings"],
         "description": "Natural Language Filtering",
@@ -108,7 +108,7 @@
         }
       }
     },
-    "/api/v1/strings/{value}": {
+    "/strings/{value}": {
       "get": {
         "tags": ["Strings"],
         "description": "Get Specific String (by its value)",
