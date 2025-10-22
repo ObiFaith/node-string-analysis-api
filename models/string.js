@@ -14,10 +14,10 @@ const StringSchema = new mongoose.Schema({
   properties: {
     length: Number,
     is_palindrome: Boolean,
-    // unique_characters: Number,
+    unique_characters: Number,
     word_count: Number,
-    sha256_hash: String, // TODO
-    // character_frequency_map: Object,
+    sha256_hash: String,
+    character_frequency_map: Object,
   },
   created_at: {
     type: Date,
@@ -25,20 +25,34 @@ const StringSchema = new mongoose.Schema({
   },
 });
 
-StringSchema.pre("validate", async function () {
+StringSchema.pre("validate", function () {
   this._id = crypto.createHash("sha256").update(this.value).digest("hex");
 });
 
 StringSchema.pre("save", async function () {
+  const counts = this.characterFrequencyMap();
+  const unique_characters = Object.keys(counts).length;
+
   this.properties = {
     length: this.value.length,
     is_palindrome: this.value === this.value.split("").reverse().join(""),
+    unique_characters,
     word_count: this.value.split(" ").length,
     sha256_hash: this._id,
+    character_frequency_map: counts,
   };
 });
 
-StringSchema.methods.characterFrequencyMap = function async() {};
+StringSchema.methods.characterFrequencyMap = function () {
+  const counts = {};
+  const chars = this.value.match(/[a-z]/g);
+
+  for (const char of chars) {
+    counts[char] = (counts[char] || 0) + 1;
+  }
+
+  return counts;
+};
 
 StringSchema.set("toJSON", {
   transform: (_, ret) => {

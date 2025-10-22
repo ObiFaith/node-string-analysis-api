@@ -5,7 +5,7 @@
     "title": "String Analyzer API",
     "description": "A RESTful API service that analyzes strings and stores their computed properties"
   },
-  "host": "node-string-analysis-api-production.up.railway.app/",
+  "host": "node-string-analysis-api-production.up.railway.app",
   "basePath": "/",
   "tags": [
     {
