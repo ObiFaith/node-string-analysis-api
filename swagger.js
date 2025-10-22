@@ -11,8 +11,8 @@ const docs = {
       "A RESTful API service that analyzes strings and stores their computed properties",
   },
   basePath: "/",
-  schemes: ["http", "https"],
-  host: process.env.HOST || "localhost:3000",
+  schemes: ["https"],
+  host: process.env.HOST,
   tags: [
     { name: "Home" },
     { name: "Strings", description: "String Analyzer Endpoints" },

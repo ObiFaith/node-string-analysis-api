@@ -2,7 +2,6 @@ import hpp from "hpp";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-// import xss from "xss-clean";
 import express from "express";
 import { configDotenv } from "dotenv";
 
@@ -25,8 +24,6 @@ export const securityMiddleware = app => {
       methods: ["GET", "POST", "DELETE"],
     })
   );
-  // sanitize user input
-  // app.use(xss());
   // prevent http paramter pollution
   app.use(hpp());
 };
